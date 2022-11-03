@@ -30,6 +30,7 @@ int main(){
     default:
         break;
     }
+    printf("Thank you for visiting");
     return 0;
 }
 int insert(int a, int b) {
