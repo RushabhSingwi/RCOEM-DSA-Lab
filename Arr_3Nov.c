@@ -6,11 +6,11 @@ int delete(int b);
 int search(int a);
 int main(){
     int a,b,x;
+    printf("Enter 10 numbers\n");
+    for(i=0; i<10; i++) {
+        scanf("%d",&arr[i]);
+    }
     while(1){
-        printf("Enter 10 numbers\n");
-        for(i=0; i<10; i++) {
-            scanf("%d",&arr[i]);
-        }
         printf("\nEnter\n1 to insert an element;\n2 to delete an element;\n3 to search an element;\n4 to exit\n:");
         scanf("%d", &x);
         switch (x)
@@ -46,14 +46,14 @@ int main(){
         default:
             break;
         }
-        printf("Thank you for visiting");
+        printf("\n***Thank you for visiting***\n");
     }
     return 0;
     }
 
 int insert(int a, int b) {
     if(size<15) {
-        for( i = size; i > b; i--)
+        for( i = size; i >= b; i--)
         {
             arr[i] = arr[i-1];
         }
@@ -80,10 +80,10 @@ int search(a) {
         }
     }
     if(count!=0) {
-        printf("Your number found at position/s :");
+        printf("Your number found at position/s: ");
         for(i=0; i<size; i++) {
             if(arr[i] == a) {
-                printf("%d", i);
+                printf("\n%d\n", i);
             }
         }
     }
