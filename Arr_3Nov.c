@@ -1,44 +1,94 @@
 #include<stdio.h>
-int size=10,arr[15];
+#include<stdlib.h>
+int i,size=10,arr[15];
 int insert(int a,int b);
-int delete(int a,int b);
+int delete(int b);
 int search(int a);
-int sort();
 int main(){
-    int a,b,x,i;
-    printf("Enter 10 numbers\n");
-    for(i=0; i<10; i++) {
-        scanf("%d",&arr[i]);
-    }
-    printf("\nEnter\n1 to insert an element;\n2 to delete an element;\n3 to search an element;\n4 to sort the array.\n:");
-    scanf("%d", &x);
-    switch (x)
-    {
-    case 1:
-        printf("\nEnter the number to add and then to what position\n");
-        scanf("%d",&a);
-        scanf("%d",&b);
-        insert(a,b);
-        size++;
-        for(i=0; i<size; i++) {
-            printf("%d ",arr[i]);
+    int a,b,x;
+    while(1){
+        printf("Enter 10 numbers\n");
+        for(i=0; i<10; i++) {
+            scanf("%d",&arr[i]);
         }
-        break;
-    case 2:
-
-        size--;
-    default:
-        break;
+        printf("\nEnter\n1 to insert an element;\n2 to delete an element;\n3 to search an element;\n4 to exit\n:");
+        scanf("%d", &x);
+        switch (x)
+        {
+        case 1:
+            printf("\nEnter the number to add and then to what position\n");
+            scanf("%d",&a);
+            scanf("%d",&b);
+            insert(a,b);
+            size++;
+            for(i=0; i<size; i++) {
+                printf("%d ",arr[i]);
+            }
+            printf("\n");
+            break;
+        case 2:
+            printf("\nEnter the position from where the number is to be deleted.\n");
+            scanf("%d", &b);
+            delete(b);
+            size--;
+            for(i=0; i<size; i++) {
+                printf("%d ",arr[i]);
+            }
+            printf("\n");
+            break;
+        case 3:
+            printf("\nEnter the number to search\n");
+            scanf("%d", &a);
+            search(a);
+            break;
+        case 4:
+            exit(1);
+        default:
+            break;
+        }
+        printf("Thank you for visiting");
     }
-    printf("Thank you for visiting");
+    return 0;
+    }
+
+int insert(int a, int b) {
+    if(size<15) {
+        for( i = size; i > b; i--)
+        {
+            arr[i] = arr[i-1];
+        }
+        arr[b-1] = a;
+    }
     return 0;
 }
-int insert(int a, int b) {
-    int i;
-    for( i = size; i > b; i--)
-    {
-        arr[i] = arr[i-1];
+int delete(b) {
+    if(b<size) {
+        for(i=b-1; i<size-1; i++) {
+            arr[i] = arr[i+1];
+        } 
     }
-    arr[b-1] = a;
+    else{
+        printf("No element there.");
+    }
+    return 0;
+}
+int search(a) {
+    int count=0;
+    for(i=0; i<size; i++) {
+        if(arr[i] == a) {
+            count++;
+        }
+    }
+    if(count!=0) {
+        printf("Your number found at position/s :");
+        for(i=0; i<size; i++) {
+            if(arr[i] == a) {
+                printf("%d", i);
+            }
+        }
+    }
+    else {
+        printf("Number not found!");
+    }
     return 0;
 }
