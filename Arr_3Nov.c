@@ -53,7 +53,7 @@ int main(){
 
 int insert(int a, int b) {
     if(size<15) {
-        for( i = size; i >= b; i--)
+        for( i = size; i >=   b; i--)
         {
             arr[i] = arr[i-1];
         }
@@ -80,7 +80,7 @@ int search(a) {
         }
     }
     if(count!=0) {
-        printf("Your number found at position/s: ");
+        printf("Your number found %d time/s at position/s: ", count);
         for(i=0; i<size; i++) {
             if(arr[i] == a) {
                 printf("\n%d\n", i);
