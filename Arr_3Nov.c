@@ -11,7 +11,12 @@ int main(){
         scanf("%d",&arr[i]);
     }
     while(1){
-        printf("\nEnter\n1 to insert an element;\n2 to delete an element;\n3 to search an element;\n4 to exit\n:");
+        printf("\nEnter"
+        "\n1 to insert an element;"
+        "\n2 to delete an element;"
+        "\n3 to search an element;"
+        "\n4 to print the array;"
+        "\n5 to exit\n:");
         scanf("%d", &x);
         switch (x)
         {
@@ -21,20 +26,12 @@ int main(){
             scanf("%d",&b);
             insert(a,b);
             size++;
-            for(i=0; i<size; i++) {
-                printf("%d ",arr[i]);
-            }
-            printf("\n");
             break;
         case 2:
             printf("\nEnter the position from where the number is to be deleted.\n");
             scanf("%d", &b);
             delete(b);
             size--;
-            for(i=0; i<size; i++) {
-                printf("%d ",arr[i]);
-            }
-            printf("\n");
             break;
         case 3:
             printf("\nEnter the number to search\n");
@@ -42,6 +39,12 @@ int main(){
             search(a);
             break;
         case 4:
+            for(i=0; i<size;i++) {
+                printf("%d ", arr[i]);
+            }
+            printf("\n");
+            break;
+        case 5:
             exit(1);
         default:
             break;
