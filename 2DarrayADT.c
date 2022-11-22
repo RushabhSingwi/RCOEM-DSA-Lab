@@ -51,6 +51,7 @@ int main() {
     }
     return 0;
 }
+//Row Major display
 int displayRow(struct array2DADT array) {
     int i,j;
     printf("\n-----------------***-----------------\n");
@@ -63,16 +64,19 @@ int displayRow(struct array2DADT array) {
     printf("\n-----------------***-----------------\n");
     return 0;
 }
+//Column Major Display
 int displayColumn(struct array2DADT array) {
     int i,j,t=0,l=0, colMat[25];
     struct array2DADT A;
     printf("\n-----------------***-----------------\n");
+    //inputing elements in a 1d array
     for(i=0; i<array.row; i++) {
         for(j=0; j<array.column; j++) {
             colMat[t] = array.arr[i][j];
             t++;
         }
     }
+    //Putting elements in another 2d array as required to display in column major fashion
     i=0;
     j=0;
     for(l=0; l<array.row; l++) {
@@ -83,6 +87,7 @@ int displayColumn(struct array2DADT array) {
         j=0;
         i++;
     }
+    //Printing the array
     for(i=0; i<array.row; i++) {
         for(j=0; j<array.column; j++) {
             printf("%d ", A.arr[i][j]);
@@ -92,6 +97,7 @@ int displayColumn(struct array2DADT array) {
     printf("\n-----------------***-----------------\n");
     return 0;
 }
+//Giving Transpose of matrix
 int transpose(struct array2DADT array) {
     int i,j;
     printf("\n-----------------***-----------------\n");
