@@ -6,10 +6,12 @@ int delete(int b);
 int search(int a);
 int main(){
     int a,b,x;
+
     printf("Enter 10 numbers\n");
     for(i=0; i<10; i++) {
         scanf("%d",&arr[i]);
     }
+    
     while(1){
         printf("\nEnter"
         "\n1 to insert an element;"
@@ -83,7 +85,7 @@ int search(a) {
         }
     }
     if(count!=0) {
-        printf("Your number found %d time/s at position/s: ", count);
+        printf("Your number found %d time(s) at position(s): ", count);
         for(i=0; i<size; i++) {
             if(arr[i] == a) {
                 printf("\n%d\n", i);
