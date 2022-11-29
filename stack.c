@@ -1,3 +1,4 @@
+// Stack using array
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -69,7 +70,7 @@ int pop(struct work *anyStack) {
 
 int peek(struct work *anyStack) {
     if(anyStack->top!=-1) {
-        printf("\nThe anyStack->top element is: %d\n", anyStack->arr[anyStack->top]);
+        printf("\nThe top element is: %d\n", anyStack->arr[anyStack->top]);
     }
     else {
         printf("\n!!!Stack underflow!!!\n\n\n");
