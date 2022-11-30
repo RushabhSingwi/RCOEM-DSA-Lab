@@ -68,7 +68,7 @@ int main() {
             break;
         }
         printf("\n");
-        for(i=0; i<=myQueue.rear; i++) {
+        for(i=myQueue.front; i<=myQueue.rear; i++) {
             printf("%d ", myQueue.arr[i]);
         }
         printf("\n\n");
@@ -111,9 +111,6 @@ int delete(struct queue *anyQueue) {
         anyQueue->rear = -1;
         return 0;
     } // for when all the elements are deleted
-    for(i = 0; i<anyQueue->rear; i++) {
-        anyQueue->arr[i] = anyQueue->arr[i+1];
-    }
-    anyQueue->rear--;
+    anyQueue->front++;
     return 0;
 }
