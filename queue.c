@@ -1,3 +1,4 @@
+//This is a code of a simple queue using array
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -68,6 +69,9 @@ int main() {
             break;
         }
         printf("\n");
+        for(i=0; i<myQueue.front; i++) {
+            printf("## ");
+        }
         for(i=myQueue.front; i<=myQueue.rear; i++) {
             printf("%d ", myQueue.arr[i]);
         }
