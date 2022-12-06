@@ -10,17 +10,22 @@ struct array2DADT {
 int displayRow(struct array2DADT array);
 int displayColumn(struct array2DADT array);
 int transpose(struct array2DADT array);
+int matAdd(struct array2DADT *array1, struct array2DADT array2);
+int matMulti(struct array2DADT *array);
 int main() {
-    struct array2DADT mat;
-    int num, i, j,choice;
-    printf("Enter Number of rows and column\n");
-    scanf("%d",&mat.row);
-    printf(" x ");
-    scanf("%d", &mat.column);
-    num = mat.row * mat.column;
-    if (num > 25) {
-        printf("\nInvalid input, max size is 5 x 5\n");
-        exit(1);
+    struct array2DADT mat, mat2;
+    int num, i=0, j,choice;
+    while(i==0) {
+        i = 1;
+        printf("Enter Number of rows and column\n");
+        scanf("%2d",&mat.row);
+        printf(" x ");
+        scanf("%2d", &mat.column);
+        num = mat.row * mat.column;
+        if (num > 25) {
+            printf("\nInvalid input, max size is 5 x 5\n");
+            i = 0;
+        }
     }
     printf("\nEnter %d elements:\n", num);
     for(i=0; i<mat.row; i++) {
@@ -34,7 +39,9 @@ int main() {
                 "1 for row major display\n"
                 "2 for column major display\n"
                 "3 for transpose of row major\n"
-                "4 to exit\n");
+                "4 to add another matrix\n"
+                "5 to multiply by another matrix\n"
+                "6 to exit\n");
         scanf("%d", &choice);
         switch(choice) {
             case 1: displayRow(mat);
@@ -43,7 +50,20 @@ int main() {
                 break;
             case 3: transpose(mat);
                 break;
-            case 4: exit(1);
+            case 4: 
+                mat2 = mat;
+                printf("\nEnter %d elements:\n", num);
+                for(i=0; i<mat2.row; i++) {
+                    for(j=0; j<mat2.column; j++) {
+                        scanf("%d", &mat2.arr[i][j]);
+                    }
+                }
+                matAdd(&mat, mat2);
+                break;
+            case 5:
+            //working on it
+                break;
+            case 6: exit(1);
                 break;
             default: break;
         }
@@ -57,7 +77,7 @@ int displayRow(struct array2DADT array) {
     printf("\n-----------------***-----------------\n");
     for(i=0; i<array.row; i++) {
         for(j=0; j<array.column; j++) {
-            printf("%d ", array.arr[i][j]);
+            printf("%4d ", array.arr[i][j]);
         }
             printf("\n");
     }
@@ -90,7 +110,7 @@ int displayColumn(struct array2DADT array) {
     //Printing the array
     for(i=0; i<array.row; i++) {
         for(j=0; j<array.column; j++) {
-            printf("%d ", A.arr[i][j]);
+            printf("%4d ", A.arr[i][j]);
         }
         printf("\n");
     }
@@ -103,10 +123,27 @@ int transpose(struct array2DADT array) {
     printf("\n-----------------***-----------------\n");
     for(j=0; j<array.column; j++) {
         for(i=0; i<array.row; i++) {
-            printf("%d ", array.arr[i][j]);
+            printf("%4d ", array.arr[i][j]);
         }
             printf("\n");
     }
     printf("\n-----------------***-----------------\n");
+    return 0;
+}
+//Addition of another matrix
+int matAdd(struct array2DADT *array1, struct array2DADT array2) {
+    int i,j;
+    for(i=0; i< array1->row; i++) {
+        for(j=0; j<array1->column; j++) {
+        array1->arr[i][j] = array1->arr[i][j] + array2.arr[i][j];
+        }
+    }
+    printf("\nNew array is:\n");
+    for(i=0; i< array1->row; i++) {
+        for(j=0; j<array1->column; j++) {
+        printf("%d ", array1->arr[i][j]);
+        }
+        printf("\n");
+    }
     return 0;
 }
